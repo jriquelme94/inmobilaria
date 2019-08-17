@@ -1,0 +1,428 @@
+html{
+    box-sizing: border-box;
+    font-size: 62.5%; /* Reset para REMS - 62.5% = 10px de 16px */
+}
+
+*, *:before, *:after{
+    box-sizing: inherit;
+}
+
+body{
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.7;
+}
+
+/** Globales **/
+img{
+    /* aplico un max-width de 100% a todas mis imagenes para que las mismas sean responsivas */
+    max-width: 100%;
+}
+
+.contenedor{
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+h1{
+    /* Es importante establecer un sistema de tamaños para las diferentes etiquetas '<h*>' 
+    para evitar futuros problemas. */
+    font-size: 3.8rem;
+}
+
+h2{
+    font-size: 3.4rem;
+}
+
+h3{
+    font-size: 3rem;
+}
+
+h4{
+    font-size: 2.6rem;
+}
+
+/** Utilidades **/
+.seccion{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.fw-300{
+    /* las clases '.fw300' y '.centrar-texto' las utilizamos para crear pequeños frameworks que sean reutilizables.*/
+    font-weight: 300;
+}
+
+.centrar-texto{
+    text-align: center;
+}
+
+.d-block{
+    display: block !important;
+}
+
+.centrar-elemento{
+    display: flex;
+    justify-content: center;
+}
+
+.contenido-centrado{
+    max-width: 80rem;
+}
+
+/** Botones **/
+.boton{
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.8rem;
+    padding: 1rem 3rem;
+    margin-top: 3rem;
+    text-align: center;
+    display: inline-block;
+    /* las etiquetas '<a>' e '<img>' tienen por defecto un 'display: inline;' que no permite que se pueda 
+    especificar un ancho, por esto mismo, se agrega 'display: inline-block;' para que si lo permita.*/
+    border-radius: 1rem;
+    border: none;
+}
+.boton:hover{
+    cursor: pointer;
+}
+
+.boton-amarillo{
+    background-color: #E08709;
+}
+
+.boton-verde{
+    background-color: #71B100;
+}
+
+/** Header **/
+.site-header{
+    background-color: #333333;
+    padding: 1rem 0 3rem 0;
+}
+
+.site-header.inicio{
+    background-image: url(../img/header.jpg);
+    background-position: center center;
+    /* la propiedad 'background-position' se utiliza para establecer la posición de una imágen. 
+    Al utilizar los valores 'center center', estamos diciendo que se tome la imágen desde el centro, y se expanda.*/
+    background-size: cover;
+    /* la propiedad 'background-size' sirve para indicar el tamaño de la imagen de fondo. 
+    Al utilizar el valor 'cover', estamos diciendo que la imagen se agrande ocupando todo el ancho y 
+    alto disponible pero respetando las proprciones de dicha imágen. */
+    height: 100vh;
+    /* la medida 'vh' es de viewport height sirve para indicar que (en este caso), 
+    la altura de la imagen va a ser igual a la pantalla donde se esté viendo esa imagen. */
+    min-height: 60rem;
+    /* 'min-height' se utiliza para establecer un tamaño mínimo, en este caso, 
+    el tamaño mínimo en que se va a mostrar la imagen de fondo. */
+}
+
+.contenido-header{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.contenido-header h1{
+    color: white;
+    padding-bottom: 3rem;
+    max-width: 60rem;
+    /*line-height: 1.7;*/
+}
+
+.barra{
+    display: flex;
+    /* si colocamos 'display: flex;', habilitamos FlexBox para poder posicionar los elementos.*/
+    justify-content: space-between;
+    /* La propiedad 'justify-content' nos sirve para alinear elementos horizontalmente, y si utilizamos el valor 
+    'space-between', estamos seteando que los elementos se coloquen unos a la izquierda, y otros a la derecha. */
+    padding-top: 3rem;
+    /* 'padding' es una propiedad que sirve para colocar espacios hacia dentro de mi elemento.*/
+}
+
+/** Navegación **/
+.navegacion a{
+    /* una buena forma de aplicar estilos, es establecer una clase dentro de mi HTML y luego
+     decir qué elementos de esa clase van a tener X estilo. En este caso, los enlaces (elementos con etiqueta <a>).*/
+    color: white;
+    text-decoration: none;
+    font-size: 2rem;
+    margin-right: 2rem;
+}
+.navegacion a:hover{
+    color: #71B100;
+}
+.navegacion a:last-of-type{
+    /* si se coloca una etiqueta y luego ':', se está creando un pseudo selector que va a afectar a su selector padre.
+    En este caso, decimos que al último elemento que tenga mi etiqueta '<a>', se le aplique un margen de 0px, 
+    ya que en el bloque de código de arriba, se aplicó un margen a todos los elementos de mi etiqueta '<a>' */
+    margin: 0;
+}
+
+/** Nosotros **/
+.iconos-nosotros{
+    display: flex;
+    justify-content: space-between;
+}
+
+.icono {
+    flex-basis: calc(33.3% - 1rem);
+    /* la propiedad 'flex-basis' sirve para establecer el ancho de elementos. 
+    Se utiliza porcentajes para no especificar una medida en particular sin recurrir a píxeles PENSANDO EN 
+    RENSPONSIVE DESIGN. Luego se le aplica una resta, para que luego de calcular los píxeles (según la pantalla), 
+    se reste 10 píxeles (1rem).*/
+    text-align: center;
+}
+.icono h3{
+    text-transform: uppercase;
+    /* la propiedad 'text-transform' sirve para transformar texto y colocando el valor 'uppercase', 
+    hacemos que nuestro texto se vuelva en mayúsculas. */
+}
+
+/** Anuncios **/
+.contenedor-anuncios{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    /* 'flex-wrap: wrap;' esta propiedad nos permite que se elimine el scroll a la derecha en nuestros elementos para poder posicionarlos 
+    uno abajo del otro. Es importante que esta propiedad se establezca en el PADRE, para poder utilizar 'flex-grow' en el HIJO. */
+}
+
+.anuncio{
+    flex: 0 0 calc(33.3% - 1rem);
+    /*con 'flex: 0 0 calc(33.3% - 1rem)' reemplazamos las propiedades 'flex-grow' (para que el contenido se AGRANDE), 'flex-shrink' 
+    (para que el contenido se ACHIQUE) y 'flex-basis' (para que el contenido sea DISTRIBUIDO) para escribirlas en 1 sola linea. */
+    border: 0.1rem solid #B5B5B5;
+    background-color: #F5F5F5;
+    margin-bottom: 2rem;
+}
+
+.contenido-anuncio{
+    padding: 2rem;
+}
+.contenido-anuncio h3, .contenido-anuncio p{
+    /* se pueden usar más de un selector (o pseudo selector en este caso) para aplicar el mismo estilo a 
+    distintos elementos. */
+    margin: 0;
+}
+
+.precio{
+    color: #71B100;
+    font-weight: 700;
+}
+
+.iconos-caracteristicas{
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+    max-width: 50rem;
+    flex: 1;
+}
+.iconos-caracteristicas li{
+    display: flex;
+}
+.iconos-caracteristicas img{
+    margin-right: 2rem;
+}
+
+/** Contacto Home **/
+.imagen-contacto{
+    background-image: url(../img/encuentra.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 40rem;
+    display: flex;
+    align-items: center;
+}
+
+.contenido-contacto{
+    flex: 1;
+    /* el atributo 'flex' sirve para determinar la cantidad de píxeles que se encuentran en la pantalla y 
+    los distribuye en los elementos que haya, en este caso 1. EJ: si hay 1000 píxeles disponibles y 
+    se establece '1' como valor, otorga esos pixeles a mi elemento. */
+    color:white;
+}
+.contenido-contacto p{
+    font-size: 2rem;
+}
+
+/** Sección Inferior **/
+.seccion-inferior{
+    display: flex;
+    justify-content: space-between;
+}
+
+.seccion-inferior .blog{
+    flex-basis: 60%;
+}
+
+.seccion-inferior .testimoniales{
+    flex-basis: calc(40% - 2rem);
+}
+
+.entrada-blog{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+.entrada-blog:last-of-type{
+    margin-bottom: 0;
+}
+.entrada-blog .imagen{
+    flex-basis: 40%;
+}
+
+.entrada-blog .texto-entrada{
+    flex-basis: calc(60% - 3rem);
+}
+.texto-entrada a{
+    color:black;
+    text-decoration: none;
+}
+.texto-entrada h4{
+    margin: 0;
+    line-height: 1.4;
+}
+.texto-entrada h4::after{
+    /* así como hay pseudo selectores, hay paseudo elementos; al escribir '.texto-entrada h4::after', 
+    decimos que se cre un elemento (pseudo elemento), luego del h4.*/
+    content: '';
+    display: block;
+    width: 15rem;
+    height: 0.5rem;
+    background-color: #71B100;
+    margin-top: 1rem;
+}
+.texto-entrada span{
+    color: #E08709;
+}
+
+/** Testimoniales **/
+.testimonial{
+    background-color: #71B100;
+    padding: 2.4rem;
+    font-size: 2rem;
+    border-radius: 3rem;
+    color: white;
+}
+.testimonial p{
+    text-align: right;
+}
+.testimonial blockquote::before{
+    content: '';
+    background-image: url(../img/comilla.svg);
+    width: 4rem;
+    height: 4rem;
+    left: -2rem;
+    position: absolute;
+    /*Si queremos crear un pseudo elemento antes de que se cree otro, debemos usar ::before. Luego de esto, 
+    debemos establecer que el Padre de nuestro pseudo elemento tengo 'position: absolute;' y el hijo 
+    tenga 'position: relative;'*/
+}
+.testimonial blockquote{
+    position: relative;
+    padding-left: 5rem;
+    font-weight: 300;
+}
+
+/** Footer **/
+.site-footer{
+    background-color: #333333;
+    margin: 0;
+}
+
+.contenedor-footer {
+    padding: 3rem 0;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+}
+
+.copyright{
+    margin: 0;
+    color: white;
+}
+
+/*** INTERNAS ***/
+/** Nosotros **/
+.contenido-nosotros{
+    display: grid;
+    /* 'display: grid;' sirve para poder aplicar Grid para poder posicioar elementos como si fuese una Grilla */
+    grid-template-columns: repeat(2, 1fr);
+    /* 'grid-template-columns: repeat(2, 1fr);' significa que la grilla va a repartir, en 2 columnas, 
+    1 fracción igual a cada una. */
+    grid-column-gap: 2rem;
+    /* 'grid-column-gap: 2rem;' sirve para aplicar un espacio entre columna y columna, 
+    esto se hace para evitar usar paddings. */
+}
+
+.texto-nosotros blockquote{
+    font-size: 2rem;
+    font-weight: 900;
+    margin: 0;
+    padding: 1rem 0 3rem 0;
+} 
+
+/** Anuncio **/
+.resumen-propiedad{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/** Contacto **/
+.contacto p{
+    font-size: 1.2rem;
+    color: #4f4f4f;
+    margin: 2rem 0 0 0;
+}
+
+legend{
+    font-size: 1.8rem;
+    color: #4f4f4f;
+}
+
+label{
+    font-weight: 700;
+    display: block;
+    text-transform: uppercase;
+}
+
+fieldset{
+    border-radius: 1rem;
+}
+
+input:not([type="submit"]), textarea, select{
+    padding: 1rem;
+    display: block;
+    width: 100%;
+    background-color: #e1e1e1;
+    margin-bottom: 2rem;
+    border: none;
+    border-radius: 1rem;
+}
+input[type="radio"]{
+    width: auto;
+
+}
+
+select{
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+textarea{
+    height: 20rem;
+}
+
+.forma-contacto{
+    max-width: 60rem;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
